@@ -9,6 +9,7 @@
         "node": ">= 0.6.0",
         "npm": ">= 1.0.0"
     },
+    "express": "-4.0.0",
     "scripts": {
         "start": "node main.js"
     },
