@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<!--
+	Highlights by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>this</title>
+		
+	</head>
+	<body>
+            
+           <table id="tab">
+<tbody><tr><th>Provincia</th><th>Comuni</th></tr>
+<tr><td>Milano</td><td>134 </td></tr>
+<tr><td>Cremona</td><td>115 </td></tr>
+<tr><td>Bergamo</td><td>244 </td></tr>
+<tr><td>Brescia</td><td>206 </td></tr>
+<tr><td>Pavia</td><td>190</td></tr>
+<tr><td>Lodi</td><td>61</td></tr>
+<tr><td>TOTALE</td><td id="totale"></td></tr>
+</tbody></table>
+            
+            
+                <script language ="javascript">
+
+		var table = document.getElementById("tab");
+		var cells = table.getElementsByTagName("td");
+		var tot = 0;
+		for (var i = 0; i < (cells.length -1); i++) {
+		var v = cells[i].textContent;
+		if (! isNaN(v)) { // isNaN valuta se può essere convertito in numero ma non lo converte
+		v = parseInt(v); // parseInt converte in numeri ma non ritorno un valore booleano testabile nel IF
+		tot = tot + v;
+		document.getElementById("totale").textContent = tot;
+		}
+}			
+
+
+
+
+
+                </script>
+		
+	</body>
+</html>
