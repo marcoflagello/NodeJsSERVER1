@@ -10,7 +10,7 @@ var fs = require('fs') ;
 var http = require('http') ;
 var dispatcher = require('./module-02') ;
 dispatcher.addListener("get", "/", function(req, res) {
-  fs.readFile(__dirname + '/home.html', function (err, content) {
+  fs.readFile(__dirname + '/prova.html', function (err, content) {
     if (err) {
       res.writeHead(500) ;
       return res.end('Error loading file') ;
