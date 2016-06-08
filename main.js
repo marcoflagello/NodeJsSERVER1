@@ -32,7 +32,7 @@ dispatcher.addListener("post", "/login", function(req, res) {
   res.end('Post one') ;
 }) ;
 
-var port = process_env.OPENSHIFT_NODEJS_PORT || 8080;
+var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 var address = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 
 http.createServer(function (req, res) {
