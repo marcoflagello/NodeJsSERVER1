@@ -1,43 +1,22 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+var http = require('http');
 
 
-
-var fs = require('fs') ;
-var http = require('http') ;
-var dispatcher = require('./module-02') ;
-dispatcher.addListener("get", "/", function(req, res) {
-  fs.readFile(__dirname + '/prova.html', function (err, content) {
-    if (err) {
-      res.writeHead(500) ;
-      return res.end('Error loading file') ;
+function processa(req, res){
+    var corpo = "Sono qui! Mi hai chiamato!? \n";
+    
+    var content_length =  corpo.length;//dimensione contenuto response che ci serve per generare l'head http per la response
+    res.writeHead(200, {'Content-Length': content_length, "Content-Type": 'text/plain'});
+    res.end(corpo);  //con il metodo end si dice cosa fare qwuando la response è disponibile
+        
     }
-    res.writeHead(200) ;
-    res.end(content) ;
-  }) ;
-}) ;
-dispatcher.addListener("get", "/page1", function(req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'}) ;
-  res.end('Page One') ;
-}) ;
-dispatcher.addListener("get", "/page2", function(req, res) { 
-  res.writeHead(200, {'Content-Type': 'text/plain'}) ;
-  res.end('Page Two') ;
-}) ;
-dispatcher.addListener("post", "/login", function(req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'}) ;
-  res.end('Post one') ;
-}) ;
+
+
 
 var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 var address = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 
-http.createServer(function (req, res) {
-  dispatcher.dispatch(req, res) ;
-}).listen(port, address, function () {
+var s = http.createServer(processa)
+s.listen(port, address, function () {
   console.log( "Listening on " + address + ", port " + port )
 }) ;
 console.log("Server is up and running") ;
