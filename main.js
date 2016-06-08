@@ -37,5 +37,7 @@ var address = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 
 http.createServer(function (req, res) {
   dispatcher.dispatch(req, res) ;
-}).listen(8080, 'localhost') ;
+}).listen(port, address, function () {
+  console.log( "Listening on " + address + ", port " + port )
+}) ;
 console.log("Server is up and running") ;
